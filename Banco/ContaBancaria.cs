@@ -6,12 +6,12 @@
         private readonly string m_nomeCliente;
         private double m_saldo;
 
-        private ContaBancaria()
+        public ContaBancaria()
         {
 
         }
 
-        private ContaBancaria(string m_NomeCliente,double saldo)
+        public ContaBancaria(string m_NomeCliente,double saldo)
         {
             m_nomeCliente = m_NomeCliente;
             m_saldo = saldo;
@@ -30,8 +30,12 @@
             {
                 throw new ArgumentOutOfRangeException("montante");
             }
+            if(montante > Saldo)
+            {
+                throw new ArgumentOutOfRangeException("montante");
+            }
 
-            m_saldo += montante; //errado intencionalmente
+            m_saldo -= montante; //errado intencionalmente
         }
 
         public void Creditar(double montante)
